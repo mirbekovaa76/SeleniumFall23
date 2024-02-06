@@ -18,10 +18,10 @@ public class Driver { // для управления драйверами
                     driver = ChromeWebDriver.loadChromeDriver(); // если browser = chrome, то запускаем метод loadChromeDriver
                     break;
                 case "firefox":
-                    // homework
+                    driver = FirefoxWebDriver.loadFirefoxDriver();
                     break;
                 case "edge":
-                    // homework
+                    driver = EdgeWebDriver.loadEdgeDriver();
                     break;
                 default:
                     throw new IllegalArgumentException("You provided wrong Driver name");

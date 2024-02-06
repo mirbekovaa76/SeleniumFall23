@@ -3,6 +3,7 @@ package testTextBox;
 import com.fall23.IU.config.ConfigReader;
 import com.fall23.IU.drivers.Driver;
 import com.fall23.IU.pages.TextBoxPage;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -25,12 +26,26 @@ public class TextBoxTest {
         driver.get("https://demoqa.com/text-box");
         textBoxPage
                 .fillUpFullName("John Doe")
-                .fillUpEmail("sdsd@gmail.com")
+                .fillUpEmail("john@gmail.com")
                 .fillUpCurrentAdress("Mira 123")
                 .fillUpPermanentAdress("Sovet 321")
                 .clickSubmitBtn();
+
         // homework
         // add the assertions:
         // Assert.assertEquals();
+
+        String actualFullName = driver.findElement(By.cssSelector("p[id='name']")).getText();
+        Assert.assertEquals(actualFullName, "Name:John Doe");
+
+        String actualEmail = driver.findElement(By.cssSelector("p[id='email']")).getText();
+        Assert.assertEquals(actualEmail, "Email:john@gmail.com");
+
+        String actualCurrentAddress = driver.findElement(By.cssSelector("p[id='currentAddress']")).getText();
+        Assert.assertEquals(actualCurrentAddress, "Current Address :Mira 123");
+
+        String actualPermanentAddress = driver.findElement(By.cssSelector("p[id='permanentAddress']")).getText();
+        Assert.assertEquals(actualPermanentAddress, "Permananet Address :Sovet 321");
+
     }
 }
