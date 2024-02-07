@@ -2,6 +2,9 @@ package testTextBox;
 
 import com.fall23.IU.config.ConfigReader;
 import com.fall23.IU.drivers.Driver;
+import com.fall23.IU.helper.AlertHelper;
+import com.fall23.IU.helper.FrameHelper;
+import com.fall23.IU.helper.WindowHandler;
 import com.fall23.IU.pages.TextBoxPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -47,5 +50,45 @@ public class TextBoxTest {
         String actualPermanentAddress = driver.findElement(By.cssSelector("p[id='permanentAddress']")).getText();
         Assert.assertEquals(actualPermanentAddress, "Permananet Address :Sovet 321");
 
+    }
+
+    @Test
+    void switchAndClosingTabs() throws InterruptedException {
+
+        WebDriver driver = Driver.getDriver();
+        driver.get("https://demoqa.com/browser-windows");
+        WebElement newTab = driver.findElement(By.id("tabButton"));
+        for (int i = 0; i < 6; i++) {
+            newTab.click();
+            Thread.sleep(1500);
+        }
+        WindowHandler windowHandler = new WindowHandler();
+        windowHandler.switchToParentWithChildClose();
+
+    }
+
+
+    @Test
+    void alertTest() throws InterruptedException {
+
+        WebDriver driver = Driver.getDriver();
+        driver.get("https://demoqa.com/alerts");
+        WebElement confirmBtn = driver.findElement(By.id("confirmButton"));
+        confirmBtn.click();
+
+        AlertHelper alertHelper = new AlertHelper();
+        alertHelper.acceptAlert();
+
+    }
+
+    @Test
+    void frameTest(){
+        WebDriver driver = Driver.getDriver();
+        driver.get("https://demoqa.com/frames");
+        FrameHelper frameHelper = new FrameHelper(driver);
+        WebElement frameID = driver.findElement(By.id("frame1"));
+        frameHelper.swithcToFrame(frameID);
+
+        System.out.println(driver.findElement(By.id("sampleHeading")).getText());
     }
 }
