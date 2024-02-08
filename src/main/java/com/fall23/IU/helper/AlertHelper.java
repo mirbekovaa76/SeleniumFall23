@@ -12,6 +12,7 @@ public class AlertHelper {
 
 
     public Alert getAlert() {
+
         return Driver.getDriver().switchTo().alert();
     }
 
