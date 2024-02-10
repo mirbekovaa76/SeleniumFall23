@@ -23,6 +23,8 @@ public class WebDriverManager { // класс для инициализации 
                                                                            // это всё явное ожидание
 
     }
+
+
     public static void closeWebDriver(){
         driver.close();
         driver.quit();

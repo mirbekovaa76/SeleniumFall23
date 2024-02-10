@@ -1,9 +1,11 @@
 package com.fall23.IU.entity;
 
+import com.fall23.IU.drivers.Driver;
 import lombok.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +27,10 @@ public class Employee {
     private String department;
 
     public static ArrayList <Employee> getEmployeesFromTable(WebDriver driver){
+
+        // can create a driver also here , not only in parameters
+       // WebDriver driver = Driver.getDriver();
+
         // Find the table rows:
         List<WebElement> rows = driver.findElements(By.cssSelector(".ReactTable .rt-tr-group"));
 

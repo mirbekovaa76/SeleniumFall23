@@ -2,11 +2,16 @@ package com.fall23.IU.helper;
 
 import com.fall23.IU.drivers.Driver;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.security.Key;
 import java.time.Duration;
+import java.util.LinkedList;
+import java.util.List;
 
 import static com.fall23.DEMOQA.WebDriverManager.driver;
 
@@ -14,6 +19,8 @@ import static com.fall23.DEMOQA.WebDriverManager.driver;
 public class WebElementHelper { // помощник (как webDriverManager чтобы универсально работало всё
     // настраиваем под себя методы WebElement (улучшаем под себя и т.д.)
     // делаем так всегда (т.к. просто WebElement тесты могут проходить, а могут и нет)
+
+    private Select select;
 
 
     // для ожидания элемента
@@ -51,6 +58,15 @@ public class WebElementHelper { // помощник (как webDriverManager ч�
         js.executeScript("arguments[0].scrollIntoView(true);", element); // будет скроллить до самого элемента (в середине был чтоб или сверху?)
         return this;
     }
+
+    public WebElementHelper sendKeysWithEnter(WebElement element, String txt){
+        waitForElementToBeDisplayed(element);
+        element.sendKeys(txt);
+        element.sendKeys(Keys.ENTER);
+        return this;
+    }
+
+
 
 
 }
