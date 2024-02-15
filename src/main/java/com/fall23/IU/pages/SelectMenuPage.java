@@ -8,6 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 public class SelectMenuPage {
 
     public SelectMenuPage(){
+
         PageFactory.initElements(Driver.getDriver(), this);
     }
 

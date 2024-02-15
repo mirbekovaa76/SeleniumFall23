@@ -1,10 +1,7 @@
 package com.fall23.IU.helper;
 
 import com.fall23.IU.drivers.Driver;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-
 import java.util.LinkedList;
 import java.util.Set;
 

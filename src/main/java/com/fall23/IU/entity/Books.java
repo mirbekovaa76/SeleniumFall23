@@ -22,7 +22,7 @@ public class Books {
 
     public static ArrayList<Books> getBooksFromTable(WebDriver driver) {
         // find the table rows
-        List<WebElement> rows = driver.findElements(By.cssSelector(".ReactTable .rt-tr-group"));
+        List<WebElement> rows = driver.findElements(By.cssSelector(".rt-tr-group"));
 
         // created empty list
         ArrayList<Books> books = new ArrayList<>();
@@ -42,7 +42,10 @@ public class Books {
 
             books.add(new Books(image, title, author, publisher));
         }
+        rows.stream().forEach(element -> System.out.println(element.getText()));
+
         return books;
+
 
 
 

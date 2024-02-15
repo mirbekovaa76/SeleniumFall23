@@ -32,4 +32,7 @@ public class BrowserManager {
     }
 
     // TODO move all methods like: Frame, Window
+
+    // Frame methods:
+
 }

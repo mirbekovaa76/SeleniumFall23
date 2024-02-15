@@ -11,11 +11,12 @@ import java.time.Duration;
 public class AlertHelper {
 
 
+    // метод для управления(переключения) браузера с html на алерт
     public Alert getAlert() {
-
         return Driver.getDriver().switchTo().alert();
     }
 
+    // для клика на кнопку accept (будь другая кнопка, то подстраиваем этот метод под нее)
     public void acceptAlert() {
         new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(7))
                 .until(ExpectedConditions.alertIsPresent());
@@ -26,6 +27,7 @@ public class AlertHelper {
 
     }
 
+    // для клика на кнопку отмены в алерте
     public void dismissAlert() {
         new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(7))
                 .until(ExpectedConditions.alertIsPresent());

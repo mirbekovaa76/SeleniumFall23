@@ -1,6 +1,8 @@
 package com.fall23.IU.pages.hwBookStoreApp;
 
+import com.fall23.IU.data.JavaFaker;
 import com.fall23.IU.drivers.Driver;
+import com.fall23.IU.entity.BookStoreUser;
 import com.fall23.IU.helper.WebElementHelper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -12,6 +14,7 @@ import org.openqa.selenium.support.PageFactory;
 public class RegistrationPage {
 
     public RegistrationPage(){
+
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
@@ -30,54 +33,30 @@ public class RegistrationPage {
     @FindBy(id = "password")
     public WebElement passwordInput;
 
-//    @FindBy(xpath = "div[class='recaptcha-checkbox-border']")
-//    public WebElement clickToCaptcha;
-
-    @FindBy(id = "register")
+    @FindBy(xpath = "//button[@id='register']")
     public WebElement registerBtn;
 
     WebElementHelper webElementHelper = new WebElementHelper();
+    JavaFaker faker = new JavaFaker();
+    BookStoreUser randomBookStoreUser = JavaFaker.createNewUserOfBookSoreWithFakerData();
 
-    public RegistrationPage clickNewUserBtn(){
+    public RegistrationPage fillTheForm(){
+        webElementHelper
+                .sendKeys(firstNameInput, randomBookStoreUser.getFirstname())
+                .sendKeys(lastNameInput, randomBookStoreUser.getLastname());
+        userNameInput.sendKeys("test");
+        passwordInput.sendKeys("!!Testest2000");
+        return this;
+    }
+
+    public RegistrationPage clickNewUserAndScroll(){
+        webElementHelper.scrollToElement(newUserBtn);
         newUserBtn.click();
         return this;
     }
-    public RegistrationPage fillUpTheFirstName(String firstName){
-        webElementHelper.sendKeys(firstNameInput, firstName);
-        return this;
-    }
 
-    public RegistrationPage fillUpTheLAstName(String lastName){
-        webElementHelper.sendKeys(lastNameInput, lastName);
-        return this;
-    }
-
-    public RegistrationPage fillUpUserName(String userName){
-        webElementHelper.sendKeys(userNameInput, userName);
-        return this;
-    }
-
-    public RegistrationPage fillUpPassword(String password){
-        webElementHelper.sendKeys(passwordInput, password)
-                .scrollToElement(registerBtn);
-
-        return this;
-    }
-
-    public RegistrationPage clickRegisterBtn() {
-        registerBtn.click();
-        return this;
-    }
-
-    public RegistrationPage clickOnCaptcha(WebDriver driver){
-        WebElement iframe = driver.findElement(By.cssSelector("iframe[src*='recaptcha']"));
-        driver.switchTo().frame(iframe);
-
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-
-        js.executeScript("document.getElementById('recaptcha-anchor').click();");
-
-        driver.switchTo().defaultContent();
+    public RegistrationPage clickRegisterBtn(){
+        webElementHelper.click(registerBtn);
         return this;
     }
 

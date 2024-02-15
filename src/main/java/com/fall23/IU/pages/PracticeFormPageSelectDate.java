@@ -12,17 +12,18 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class PracticeFormPage {
+public class PracticeFormPageSelectDate {
 
 
-    public PracticeFormPage(){
+    public PracticeFormPageSelectDate(){
+
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
     @FindBy(className = "react-datepicker__input-container")
     public WebElement datePickerButton;
                                                      // 01 February 2021
-    public PracticeFormPage selectDateMonthYear(String dateMonthYear){
+    public PracticeFormPageSelectDate selectDateMonthYear(String dateMonthYear){
         // поделить строку на 3 части через метод сплит
         String[] dateMonthYearParts = dateMonthYear.split(" ");
         String day = dateMonthYearParts[0];

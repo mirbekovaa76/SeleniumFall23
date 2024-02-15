@@ -29,6 +29,7 @@ public class SelectMenuTest {
 
         // с помощью enum Keys, чтобы введенное в дропдаун значение нажался сразу
         webElementHelper.sendKeysWithEnter(selectMenuPage.selectValueInput, "Pro");
+        selectMenuPage.selectValueInput.sendKeys(Keys.ENTER);
 
 
     }
